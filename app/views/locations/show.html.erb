@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>You're currently at:</strong>
+  <%= @location.my_location %>
+</p>
+
+<p>
+  <strong>The closest busses are:</strong>
+  <% if @bus_count == 0 %>
+  There are no busses
+  <% end %>
+</p>
+
+<p>
+ <% @nearby_buses.each do |bus| %>
+ Route:<%= bus["ROUTE"] %><br>
+ Vehicle:<%= bus["VEHICLE"] %><br>
+ Next Stop:<%= bus["TIMEPOINT"] %><br>
+ <% end %>
+
+<%= link_to "Actually, I'm at...", edit_location_path(@location) %> |
+<%= link_to 'Back', locations_path %>
